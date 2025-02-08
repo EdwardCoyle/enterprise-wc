@@ -129,6 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
   thirdTargetEl.style.height = '50px';
   thirdTargetEl.style.width = '60px';
 
+  // Disable outside click for this example
+  popupEl.onOutsideClick = () => {};
+
   const posChangeHandler = () => {
     popupEl.setPosition(xControlEl.value, yControlEl.value, null, true);
   };
