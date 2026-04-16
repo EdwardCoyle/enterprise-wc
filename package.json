@@ -34,6 +34,7 @@
     "docs": "npx retypeapp start",
     "start": "npx rimraf build/development && node --max-old-space-size=8192 node_modules/webpack/bin/webpack serve --live-reload --open --config ./webpack.config.dev.js",
     "start:filter:example": "npm --components=data-grid run start",
+    "start:lxc": "npx rimraf build/development && node --max-old-space-size=8192 node_modules/webpack/bin/webpack serve --config ./webpack.config.dev.js",
     "lint": "npx eslint src tests && npx stylelint src/**/**/*.scss --config .stylelintrc.json && npm run mdlint && npx htmlhint 'src/**/*.html' && npx tsc",
     "mdlint": "npx remark . -q -f",
     "publish:dry-run": "npm run build:dist:prod && npm run copy-static:prod && npm publish --dry-run",
