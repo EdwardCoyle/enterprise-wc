@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /**
  * IDS Global Functions / Instances / And Utils Exposed to the end user.
  */
@@ -7,6 +9,8 @@ import { version } from '../../core/ids-attributes';
 import IdsLocale from '../ids-locale/ids-locale';
 import IdsPersonalize from '../ids-personalize/ids-personalize';
 
+declare const __BASE_PATH__: string;
+
 declare global {
   interface Window {
     IdsGlobal: {
@@ -14,6 +18,7 @@ declare global {
       themeLoaded?: IdsDeferred;
       themeName?: string;
       themePath?: string;
+      basePath?: string;
       version?: string;
       personalize?: IdsPersonalize;
       customIconData?: object;
@@ -26,7 +31,8 @@ if (typeof window !== 'undefined') {
     version,
     personalize: new IdsPersonalize(),
     themeName: '',
-    themePath: '/projects/ids-wc/themes/',
+    basePath: __BASE_PATH__,
+    themePath: `${__BASE_PATH__}themes/`,
   };
 }
 

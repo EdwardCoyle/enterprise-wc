@@ -96,7 +96,7 @@ export default class IdsDemoListing extends IdsElement {
       id: 'link',
       name: 'Example Name',
       field: 'link',
-      href: `/${this.componentName}/{{value}}`,
+      href: `${window.IdsGlobal?.basePath ?? '/'}${this.componentName}/{{value}}`,
       sortable: true,
       formatter: (this.container as IdsDataGrid)?.formatters.hyperlink
     });

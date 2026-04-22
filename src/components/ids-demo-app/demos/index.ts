@@ -234,7 +234,7 @@ categories.forEach((category: any) => {
   html += `<ids-text type="h1" font-size="24">${category.name}</ids-text>
   <ids-layout-grid auto-fit="true" justify-content="start" padding-y="md"><ids-layout-grid-cell><ids-block-grid align="center">`;
   category.components.forEach((component: any) => {
-    html += `<ids-block-grid-item><ids-card actionable="true" shadowed height="100" href="/${component.link}" target="_self"><div slot="card-content">
+    html += `<ids-block-grid-item><ids-card actionable="true" shadowed height="100" href="${window.IdsGlobal?.basePath ?? '/'}${component.link}" target="_self"><div slot="card-content">
     <ids-text type="h2" font-size="16" font-weight="semi-bold" color="text-default">${component.component}</ids-text>
     <ids-text type="h2" font-size="16" color="text-subtle">${component.description}</ids-text>
     </div></ids-card></ids-block-grid-item>
@@ -248,6 +248,6 @@ document.querySelector('#dynamic-area')?.insertAdjacentHTML('afterbegin', html);
 document.addEventListener('click', (event: any) => {
   const target = event.target.closest('[slot="card-content"]');
   if (target) {
-    window.location.href = `/${target.getAttribute('link')}`;
+    window.location.href = `${window.IdsGlobal?.basePath ?? '/'}${target.getAttribute('link')}`;
   }
 });

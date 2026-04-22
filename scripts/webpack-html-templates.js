@@ -1,6 +1,7 @@
 const fs = require('fs');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const fsFiles = require('./node-fs-files');
+const { basePath } = require('../deploy.config');
 
 let htmlTemplates = fsFiles(`./src/components`, 'html');
 const isWin32 = process.platform === 'win32' ? '\\' : '/';
@@ -58,7 +59,7 @@ const htmlExamples = htmlTemplates.map((template) => {
         chunks: chunkFileName === 'utils.html' ? ['ids-hyperlink', 'ids-demo-app-utils'] : [],
         favicon: './src/assets/images/favicon.ico',
         meta: metaTags,
-        font: '<link href="/projects/ids-wc/fonts/font-face.css" rel="stylesheet">'
+        font: `<link href="${basePath}fonts/font-face.css" rel="stylesheet">`
       });
     }
 
@@ -74,7 +75,7 @@ const htmlExamples = htmlTemplates.map((template) => {
       favicon: './src/assets/images/favicon.ico',
       scriptLoading: 'module',
       meta: metaTags,
-      font: '<link href="/fonts/font-face.css" rel="stylesheet">'
+      font: `<link href="${basePath}fonts/font-face.css" rel="stylesheet">`
     });
   }
 
@@ -93,7 +94,7 @@ const htmlExamples = htmlTemplates.map((template) => {
     favicon: './src/assets/images/favicon.ico',
     scriptLoading: 'module',
     meta: metaTags,
-    font: '<link href="/fonts/font-face.css" rel="stylesheet">'
+    font: `<link href="${basePath}fonts/font-face.css" rel="stylesheet">`
   });
 });
 

@@ -1,4 +1,5 @@
 const path = require('path');
+const { DefinePlugin } = require('webpack');
 const sass = require('sass');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -6,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const demoEntry = require('./scripts/webpack-dev-entry');
 const handleUpload = require('./scripts/handle-upload');
 const htmlExamples = require('./scripts/webpack-html-templates');
+const { basePath } = require('./deploy.config');
 
 const isProduction = process.argv[process.argv.indexOf('--mode') + 1] === 'production';
 const isCoverageMode = process.argv[process.argv.indexOf('--env') + 1] === 'coverage';
@@ -17,7 +19,7 @@ module.exports = {
     filename: '[name]/[name].js',
     assetModuleFilename: '[path][name][ext]',
     clean: true,
-    publicPath: '/projects/ids-wc/'
+    publicPath: basePath
   },
   mode: isProduction ? 'production' : 'development',
   optimization: {
@@ -183,6 +185,9 @@ module.exports = {
           }
         },
       ]
+    }),
+    new DefinePlugin({
+      __BASE_PATH__: JSON.stringify(basePath)
     })
   ].concat(htmlExamples)
 };
