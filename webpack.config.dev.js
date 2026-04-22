@@ -17,7 +17,7 @@ module.exports = {
     filename: '[name]/[name].js',
     assetModuleFilename: '[path][name][ext]',
     clean: true,
-    publicPath: '/'
+    publicPath: '/projects/ids-wc/'
   },
   mode: isProduction ? 'production' : 'development',
   optimization: {
