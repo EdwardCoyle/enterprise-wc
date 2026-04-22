@@ -58,7 +58,7 @@ const htmlExamples = htmlTemplates.map((template) => {
         chunks: chunkFileName === 'utils.html' ? ['ids-hyperlink', 'ids-demo-app-utils'] : [],
         favicon: './src/assets/images/favicon.ico',
         meta: metaTags,
-        font: '<link href="/fonts/font-face.css" rel="stylesheet">'
+        font: '<link href="/projects/ids-wc/fonts/font-face.css" rel="stylesheet">'
       });
     }
 

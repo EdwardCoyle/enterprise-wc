@@ -26,7 +26,7 @@ if (typeof window !== 'undefined') {
     version,
     personalize: new IdsPersonalize(),
     themeName: '',
-    themePath: ''
+    themePath: '/projects/ids-wc/themes/',
   };
 }
 
