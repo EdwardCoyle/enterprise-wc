@@ -40,6 +40,7 @@ module.exports = {
     hot: false,
     liveReload: false,
     port: 4300,
+    allowedHosts: ['localhost', 'edcoyle.dev', 'www.edcoyle.dev'],
     devMiddleware: {
       writeToDisk: true,
     },
