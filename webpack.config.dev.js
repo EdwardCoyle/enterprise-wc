@@ -41,6 +41,7 @@ module.exports = {
   devServer: {
     hot: false,
     liveReload: false,
+    client: false,
     port: 4300,
     allowedHosts: ['localhost', 'edcoyle.dev', 'www.edcoyle.dev'],
     devMiddleware: {
@@ -152,6 +153,12 @@ module.exports = {
             const folders = path.dirname(absoluteFilename).split(path.sep);
             const filePath = `${folders[folders.length - 2]}/${folders[folders.length - 1]}/${baseName}`;
             return filePath.replace('assets/fonts', 'fonts');
+          },
+          transform(content, transformPath) {
+            if (transformPath.endsWith('font-face.css')) {
+              return content.toString().replaceAll('url(/fonts/', `url(${basePath}fonts/`);
+            }
+            return content;
           }
         },
         {

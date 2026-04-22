@@ -42,7 +42,7 @@ const htmlExamples = htmlTemplates.map((template) => {
     metaTags.csp = {
       'http-equiv': 'Content-Security-Policy',
       content: `
-        script-src 'self' https://unpkg.com/ 'unsafe-eval';
+        script-src 'self' https://unpkg.com/ https://static.cloudflareinsights.com 'unsafe-eval';
         style-src 'self' 'nonce-0a59a005';
       `
     };
